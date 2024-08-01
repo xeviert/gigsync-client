@@ -9,7 +9,7 @@ const TypographyPage = () => {
   return (
     <PageContainer title="Typography" description="this is Typography">
 
-      <Grid container spacing={3}>
+      {/* <Grid container spacing={3}>
         <Grid item sm={12}>
           <DashboardCard title="Default Text">
             <Grid container spacing={3}>
@@ -260,7 +260,7 @@ const TypographyPage = () => {
             </Grid>
           </DashboardCard>
         </Grid>
-      </Grid >
+      </Grid > */}
     </PageContainer>
   );
 };

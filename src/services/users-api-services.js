@@ -42,10 +42,12 @@ const UsersApiServices = {
       });
   },
   getAllUsers() {
+    const authToken = localStorage.getItem('authToken');
+
     return fetch(`${config.API_ENDPOINT}/users`, {
       headers: {
         'content-type': 'application/json',
-        //   authorization: `bearer ${TokenService.getAuthToken()}`,
+        'Authorization': `Bearer ${authToken}`,
       },
     }).then((res) => {
       if (!res.ok) {

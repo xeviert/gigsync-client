@@ -54,8 +54,11 @@ const Login2 = () => {
                     textAlign="center"
                     color="textSecondary"
                     mb={1}
+                    sx={{
+                      mt: 2,
+                    }}
                   >
-                    Your Social Campaigns
+                    Your Event Managing Platform
                   </Typography>
                 }
                 subtitle={
@@ -70,7 +73,7 @@ const Login2 = () => {
                       variant="h6"
                       fontWeight="500"
                     >
-                      New to Modernize?
+                      New to GigSync?
                     </Typography>
                     <Typography
                       component={Link}

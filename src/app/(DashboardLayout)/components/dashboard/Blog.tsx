@@ -16,6 +16,8 @@ import {
 import { Stack } from "@mui/system";
 import { IconBasket } from "@tabler/icons-react";
 import BlankCard from "@/app/(DashboardLayout)/components/shared/BlankCard";
+import DashboardCard from "../shared/DashboardCard";
+import { useSelector } from 'react-redux';
 import Image from "next/image";
 
 const ecoCard = [
@@ -54,60 +56,56 @@ const ecoCard = [
 ];
 
 const Blog = () => {
+  const artists = useSelector((state) => state.artists.artists);
+  const artistsToShow = artists.slice(0, 4);
+
   return (
-    <Grid container spacing={3}>
-      {ecoCard.map((product, index) => (
-        <Grid item xs={12} md={4} lg={3} key={index}>
-          <BlankCard>
-            <Typography component={Link} href="/">
-              <Avatar
-                src={product.photo} variant="square"
-                sx={{
-                  height: 250,
-                  width: '100%',
-                }}
-                
-              />
-            </Typography>
-            <Tooltip title="Add To Cart">
-              <Fab
-                size="small"
-                color="primary"
-                sx={{ bottom: "75px", right: "15px", position: "absolute" }}
-              >
-                <IconBasket size="16" />
-              </Fab>
-            </Tooltip>
-            <CardContent sx={{ p: 3, pt: 2 }}>
-              <Typography variant="h6">{product.title}</Typography>
-              <Stack
-                direction="row"
-                alignItems="center"
-                justifyContent="space-between"
-                mt={1}
-              >
-                <Stack direction="row" alignItems="center">
-                  <Typography variant="h6">${product.price}</Typography>
-                  <Typography
-                    color="textSecondary"
-                    ml={1}
-                    sx={{ textDecoration: "line-through" }}
-                  >
-                    ${product.salesPrice}
-                  </Typography>
-                </Stack>
-                <Rating
-                  name="read-only"
-                  size="small"
-                  value={product.rating}
-                  readOnly
+    <DashboardCard title="Featured Artists">
+
+      <Grid container spacing={3}>
+        {artistsToShow.map((artist) => (
+          <Grid item xs={12} md={4} lg={3} key={artist.id}>
+            <BlankCard>
+              <Typography component={Link} href="/">
+                <Avatar
+                  src='/images/products/s4.jpg' variant="square"
+                  sx={{
+                    height: 250,
+                    width: '100%',
+                  }}
+
                 />
-              </Stack>
-            </CardContent>
-          </BlankCard>
-        </Grid>
-      ))}
-    </Grid>
+              </Typography>
+
+              <Tooltip title="Book Event">
+                <Fab
+                  size="small"
+                  color="primary"
+                  sx={{ bottom: "75px", right: "15px", position: "absolute" }}
+                >
+                  <IconBasket size="16" />
+                </Fab>
+              </Tooltip>
+
+              <CardContent sx={{ p: 3, pt: 2 }}>
+                <Typography variant="h6">{artist.name}</Typography>
+                <Stack
+                  direction="row"
+                  alignItems="center"
+                  justifyContent="space-between"
+                  mt={1}
+                >
+                  <Stack direction="row" alignItems="center">
+                    <Typography variant="h6">{artist.genre}</Typography>
+                  </Stack>
+                </Stack>
+              </CardContent>
+            </BlankCard>
+          </Grid>
+        ))}
+      </Grid>
+
+    </DashboardCard>
   );
 };
 

@@ -28,15 +28,15 @@ const Menuitems = [
   },
   {
     id: uniqueId(),
-    title: "Typography",
+    title: "Artists",
     icon: IconTypography,
-    href: "/utilities/typography",
+    href: "/utilities/artists",
   },
   {
     id: uniqueId(),
-    title: "Shadow",
+    title: "Financials",
     icon: IconCopy,
-    href: "/utilities/shadow",
+    href: "/utilities/financials",
   },
   {
     navlabel: true,
@@ -58,17 +58,17 @@ const Menuitems = [
     navlabel: true,
     subheader: "Extra",
   },
+  // {
+  //   id: uniqueId(),
+  //   title: "Icons",
+  //   icon: IconMoodHappy,
+  //   href: "/icons",
+  // },
   {
     id: uniqueId(),
-    title: "Icons",
-    icon: IconMoodHappy,
-    href: "/icons",
-  },
-  {
-    id: uniqueId(),
-    title: "Sample Page",
+    title: "Create Event",
     icon: IconAperture,
-    href: "/sample-page",
+    href: "/event-create",
   },
 ];
 

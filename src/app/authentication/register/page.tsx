@@ -52,8 +52,11 @@ const Register2 = () => (
                   textAlign="center"
                   color="textSecondary"
                   mb={1}
+                  sx={{
+                    mt: 2,
+                  }}
                 >
-                  Your Social Campaigns
+                  Your Event Managing Platform
                 </Typography>
               }
               subtitle={

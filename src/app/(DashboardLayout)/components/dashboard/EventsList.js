@@ -8,54 +8,18 @@ import {
     TableRow,
     Chip
 } from '@mui/material';
-import DashboardCard from '@/app/(DashboardLayout)//components/shared/DashboardCard';
+import { useDispatch, useSelector } from 'react-redux';
+import DashboardCard from '@/app/(DashboardLayout)/components/shared/DashboardCard';
 import EventApiServices from '../../../../services/event-api-services';
 import BookingsApiServices from '../../../../services/bookings-api-services';
 import ArtistsApiServices from '../../../../services/artists-api-services';
 import UsersApiServices from '../../../../services/users-api-services';
-
-// const products = [
-//     {
-//         id: "1",
-//         name: "Sunil Joshi",
-//         post: "Web Designer",
-//         pname: "Elite Admin",
-//         priority: "Low",
-//         pbg: "primary.main",
-//         budget: "3.9",
-//     },
-//     {
-//         id: "2",
-//         name: "Andrew McDownland",
-//         post: "Project Manager",
-//         pname: "Real Homes WP Theme",
-//         priority: "Medium",
-//         pbg: "secondary.main",
-//         budget: "24.5",
-//     },
-//     {
-//         id: "3",
-//         name: "Christopher Jamil",
-//         post: "Project Manager",
-//         pname: "MedicalPro WP Theme",
-//         priority: "High",
-//         pbg: "error.main",
-//         budget: "12.8",
-//     },
-//     {
-//         id: "4",
-//         name: "Nirav Joshi",
-//         post: "Frontend Engineer",
-//         pname: "Hosting Press HTML",
-//         priority: "Critical",
-//         pbg: "success.main",
-//         budget: "2.4",
-//     },
-// ];
+import { setArtists } from '../../../../store/slices/artistSlice';
 
 const EventsList = () => {
     const [events, setEvents] = useState([]);
     const [error, setError] = useState(null);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         Promise.all([
@@ -70,6 +34,8 @@ const EventsList = () => {
                     acc[artist.id] = artist.name;
                     return acc;
                 }, {});
+
+                dispatch(setArtists(artistsData)); // Dispatch artists to Redux
 
                 // Create a map of bookings grouped by event_id
                 const bookingsMap = bookingsData.reduce((acc, booking) => {
@@ -106,8 +72,7 @@ const EventsList = () => {
             .catch((err) => {
                 setError(err);
             });
-    }, []);
-
+    }, [dispatch]);
 
     const formatDate = (dateString) => {
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -181,7 +146,7 @@ const EventsList = () => {
                                             color: "primary",
                                         }}
                                         size="small"
-                                        label={event.venue.name}
+                                        label={event.venue ? event.venue.name : ''}
                                     ></Chip>
                                 </TableCell>
                             </TableRow>
@@ -190,7 +155,6 @@ const EventsList = () => {
                 </Table>
             </Box>
         </DashboardCard>
-
     );
 };
 

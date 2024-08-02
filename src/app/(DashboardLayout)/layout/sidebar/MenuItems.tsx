@@ -24,19 +24,13 @@ const Menuitems = [
   },
   {
     navlabel: true,
-    subheader: "Utilities",
+    subheader: "Resources",
   },
   {
     id: uniqueId(),
     title: "Artists",
     icon: IconTypography,
     href: "/utilities/artists",
-  },
-  {
-    id: uniqueId(),
-    title: "Financials",
-    icon: IconCopy,
-    href: "/utilities/financials",
   },
   {
     navlabel: true,
@@ -56,19 +50,25 @@ const Menuitems = [
   },
   {
     navlabel: true,
-    subheader: "Extra",
+    subheader: "Utilities",
   },
-  // {
-  //   id: uniqueId(),
-  //   title: "Icons",
-  //   icon: IconMoodHappy,
-  //   href: "/icons",
-  // },
   {
     id: uniqueId(),
     title: "Create Event",
     icon: IconAperture,
     href: "/event-create",
+  },
+  {
+    id: uniqueId(),
+    title: "My Events",
+    icon: IconMoodHappy,
+    href: "/my-events",
+  },
+  {
+    id: uniqueId(),
+    title: "Financials",
+    icon: IconCopy,
+    href: "/utilities/financials",
   },
 ];
 

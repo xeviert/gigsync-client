@@ -34,7 +34,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/app/(DashboardLayout)/components/dashboard/EventsList.js"
+    "src/app/(DashboardLayout)/components/dashboard/EventsList.js",
+    "src/app/authentication/auth/AuthLogin.tsx"
   ],
   "exclude": [
     "node_modules"

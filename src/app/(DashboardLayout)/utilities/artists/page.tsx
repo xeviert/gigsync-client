@@ -1,4 +1,5 @@
 'use client';
+import { useEffect, useState } from 'react';
 import Link from "next/link";
 import {
   Typography, Grid, CardContent,
@@ -12,10 +13,28 @@ import { IconBasket } from "@tabler/icons-react";
 import PageContainer from '@/app/(DashboardLayout)/components/container/PageContainer';
 import DashboardCard from '@/app/(DashboardLayout)/components/shared/DashboardCard';
 import BlankCard from '@/app/(DashboardLayout)/components/shared/BlankCard';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import ArtistsApiServices from '@/services/artists-api-services';
+import { setArtists } from '@/store/slices/artistSlice';
 
 const ArtistsPage = () => {
   const artists = useSelector((state) => state.artists.artists);
+  const [error, setError] = useState(null);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (artists.length === 0) {
+      Promise.all([
+        ArtistsApiServices.getAllArtists(),
+      ])
+        .then(([artistsData]) => {
+          dispatch(setArtists(artistsData));
+        })
+        .catch((err) => {
+          setError(err);
+        });
+    }
+  }, [artists.length, dispatch]);
 
   return (
     <PageContainer title="Artists" description="this is Artists">

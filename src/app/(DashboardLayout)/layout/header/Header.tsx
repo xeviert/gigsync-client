@@ -5,16 +5,22 @@ import Link from 'next/link';
 // components
 import Profile from './Profile';
 import { IconBellRinging, IconMenu } from '@tabler/icons-react';
+import UsersApiServices from '@/services/users-api-services';
 
 interface ItemType {
   toggleMobileSidebar: (event: React.MouseEvent<HTMLElement>) => void;
 }
+
+
 
 const Header = ({ toggleMobileSidebar }: ItemType) => {
 
   // const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'));
   // const lgDown = useMediaQuery((theme) => theme.breakpoints.down('lg'));
 
+  const handleLogout = () => {
+    UsersApiServices.userLogout()
+  }
 
   const AppBarStyled = styled(AppBar)(({ theme }) => ({
     boxShadow: 'none',
@@ -62,10 +68,10 @@ const Header = ({ toggleMobileSidebar }: ItemType) => {
         </IconButton>
         <Box flexGrow={1} />
         <Stack spacing={1} direction="row" alignItems="center">
-          <Button variant="contained" component={Link} href="/authentication/login" disableElevation color="primary" >
-            Login
+          <Button variant="contained" onClick={handleLogout} disableElevation color="primary" >
+            Logout
           </Button>
-          <Button variant="contained" component={Link} href="/authentication/register" disableElevation color="primary"
+          {/* <Button variant="contained" component={Link} href="/authentication/register" disableElevation color="primary"
             sx={{
               backgroundColor: 'white',
               color: 'primary.main',
@@ -74,7 +80,7 @@ const Header = ({ toggleMobileSidebar }: ItemType) => {
               },
             }}>
             Register
-          </Button>
+          </Button> */}
           <Profile />
         </Stack>
       </ToolbarStyled>

@@ -58,6 +58,9 @@ const ecoCard = [
 const Blog = () => {
   const artists = useSelector((state) => state.artists.artists);
   const artistsToShow = artists.slice(0, 4);
+  const images = [
+
+  ]
 
   return (
     <DashboardCard title="Featured Artists">
@@ -68,7 +71,7 @@ const Blog = () => {
             <BlankCard>
               <Typography component={Link} href="/">
                 <Avatar
-                  src='/images/products/s4.jpg' variant="square"
+                  src={artist.image_url} variant="square"
                   sx={{
                     height: 250,
                     width: '100%',

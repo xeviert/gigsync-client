@@ -46,7 +46,7 @@ const ArtistsPage = () => {
               <BlankCard>
                 <Typography component={Link} href="/">
                   <Avatar
-                    src='/images/products/s4.jpg' variant="square"
+                    src={artist.image_url} variant="square"
                     sx={{
                       height: 250,
                       width: '100%',

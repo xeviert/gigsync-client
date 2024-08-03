@@ -51,8 +51,8 @@ Add a .env file in the root of your project and configure the necessary environm
   ```
   
 4. **Run the development server**:
-```bash
-npm run dev
+  ```bash
+  npm run dev
 ```
   
 5. **Open the application**:

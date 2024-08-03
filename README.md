@@ -37,7 +37,7 @@ To set up the GigSync client-side project locally, follow these steps:
    ```bash
    git clone https://github.com/xeviert/gigsync-client.git
    cd gigsync-client
-  ```
+    ```
 
 2. **Install dependencies**:
    ```bash
